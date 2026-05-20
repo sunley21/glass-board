@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glass Board - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .login-container {
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .school-header {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo-section h1 {
+            color: #1f2937;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .logo-section p {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            color: #1f2937;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .input-group input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: #667eea;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .login-btn:hover {
+            background: #5a67d8;
+        }
+
+        .toggle-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #6b7280;
+        }
+
+        .toggle-link span {
+            color: #667eea;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .message {
+            margin-top: 1rem;
+            padding: 0.6rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .error {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .success {
+            background: #dcfce7;
+            color: #22c55e;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="school-header">
+            <div class="logo-section">
+                <h1>Glass Board</h1>
+                <p>Digital Archive - Secure Access</p>
+            </div>
+
+            <div id="loginForm">
+                <form method="POST" action="/login">
+                    <div class="input-group">
+                        <label>USERNAME / ID</label>
+                        <input type="text" name="username_id" placeholder="Enter your username / ID" required>
+                    </div>
+                    <div class="input-group">
+                        <label>PASSWORD</label>
+                        <input type="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="login-btn">Login</button>
+                </form>
+                <div class="toggle-link">
+                    Don't have an account? <span onclick="showSignup()">Sign up</span>
+                </div>
+                {% if error %}
+                <div class="message error">{{ error }}</div>
+                {% endif %}
+                {% if message %}
+                <div class="message success">{{ message }}</div>
+                {% endif %}
+            </div>
+
+            <div id="signupForm" style="display:none;">
+                <form method="POST" action="/signup">
+                    <div class="input-group">
+                        <label>USERNAME / ID</label>
+                        <input type="text" name="username_id" placeholder="Choose a username / ID" required>
+                    </div>
+                    <div class="input-group">
+                        <label>EMAIL ACCOUNT</label>
+                        <input type="email" name="email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label>FULL NAME</label>
+                        <input type="text" name="name" placeholder="Your full name" required>
+                    </div>
+                    <div class="input-group">
+                        <label>PASSWORD</label>
+                        <input type="password" name="password" placeholder="Create a password" required>
+                    </div>
+                    <button type="submit" class="login-btn">Create Account</button>
+                </form>
+                <div class="toggle-link">
+                    Already have an account? <span onclick="showLogin()">Sign in</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showLogin() {
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('signupForm').style.display = 'none';
+        }
+
+        function showSignup() {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('signupForm').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

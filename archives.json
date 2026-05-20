@@ -1,0 +1,32 @@
+{
+  "2121": {
+    "main": [
+      {
+        "children": [],
+        "date": "5/21/2026",
+        "id": 1779308008716,
+        "isFolder": true,
+        "name": "edsd",
+        "photos": []
+      },
+      {
+        "children": [],
+        "date": "5/21/2026",
+        "id": 1779308012775,
+        "isFolder": true,
+        "name": "ffd",
+        "photos": []
+      }
+    ],
+    "trash": [
+      {
+        "children": [],
+        "date": "5/21/2026",
+        "id": 1779308043382,
+        "isFolder": true,
+        "name": "gre",
+        "photos": []
+      }
+    ]
+  }
+}
